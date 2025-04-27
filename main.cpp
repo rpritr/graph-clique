@@ -1,5 +1,4 @@
 #include <iostream>
-#include "src/graph.h"
 #include "src/clique.h"
 using namespace std;
 
@@ -12,5 +11,6 @@ int main()
 
     Clique c(initGraph);
     c.findGreedyMaxClique();
+    c.findBronKerboschMaxClique();
     return 0;
 }
