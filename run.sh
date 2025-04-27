@@ -1,1 +1,1 @@
-g++ -std=c++11 main.cpp && ./a.out 
+++ -std=c++11 src/Graph.cpp src/Clique.cpp main.cpp && ./a.out
