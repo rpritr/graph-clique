@@ -13,6 +13,8 @@ Clique::Clique(const Graph &G) : G(G)
     }
 }
 
+// overloadam operator, da ga lahko uporabim v main
+
 // izpis stopenj vozlisc v grafu
 void Clique::printVerticeDegrees(vector<pair<int, int>> V)
 {
@@ -67,9 +69,92 @@ void Clique::findGreedyMaxClique()
         if (add)
             this->clique.push_back(addV);
     }
+    cout << "Greedy Max klika: ";
     this->printClique();
 }
 
 void Clique::findBronKerboschMaxClique()
 {
+    vector<int> R; // prazna mnozica
+    vector<int> P; //  mnozica vozlisc v grafu
+    vector<int> X; // prazna mnozica
+
+    // nastavimo P
+    for (int i = 0; i < G.getGraph().size(); i++)
+    {
+        P.push_back(i);
+    }
+
+    this->bronKerbosch(R, P, X);
+}
+
+// https://en.wikipedia.org/wiki/Bron%E2%80%93Kerbosch_algorithm
+void Clique::bronKerbosch(vector<int> R, vector<int> &P, vector<int> &X)
+{
+    // cout << R.size() << endl;
+    // cout << P.size() << endl;
+    // cout << X.size() << endl;
+    if (R.size() > 10)
+    {
+        return;
+    }
+    if (P.empty() && X.empty())
+    {
+        if (R.size() > clique.size())
+        {
+            if (clique.size() != 0) // TODO mogoce klic spodaj po clique = R
+            {
+                cout << "bronKerbosch Max klika: ";
+                printClique();
+            }
+
+            clique = R;
+            return;
+        }
+        return;
+    }
+    if (P.empty())
+    {
+        return;
+    }
+
+    vector<int> Pcopy = P; // delam na kopiji, da ne spreminjam stanja
+    for (int i = 0; i < Pcopy.size(); i++)
+    {
+        vector<int> newR = R;
+        vector<int> newP;
+        vector<int> newX;
+
+        int v = Pcopy[i];
+        // R unija v
+        newR.push_back(v);
+
+        // P presek N, kjer je N sosed, torej za vsakega soseda
+        for (int j = 0; j < P.size(); j++)
+        {
+            int u = P[j];
+            if (G.getGraph()[v][u])
+            {
+                newP.push_back(u);
+            }
+        }
+
+        // X presek N, kjer je N sosed, torej za vsakega soseda
+        for (int k = 0; k < X.size(); k++)
+        {
+            int u = X[k];
+            if (G.getGraph()[v][u])
+            {
+                newX.push_back(u);
+            }
+        }
+        bronKerbosch(newR, newP, newX); // rekurzivni klic bronKerbosch
+        //  P := P \ {v}
+        auto it = find(P.begin(), P.end(), v);
+        if (it != P.end())
+            P.erase(it);
+
+        // **X := X ∪ {v}**
+        X.push_back(v);
+    }
 }

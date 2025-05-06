@@ -10,7 +10,10 @@ int main()
     initGraph.printGraphStats();
 
     Clique c(initGraph);
+
     c.findGreedyMaxClique();
-    c.findBronKerboschMaxClique();
+
+    Clique d(initGraph);
+    d.findBronKerboschMaxClique();
     return 0;
 }

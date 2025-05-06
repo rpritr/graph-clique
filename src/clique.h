@@ -20,6 +20,7 @@ public:
     void printClique();
     void findGreedyMaxClique();
     void findBronKerboschMaxClique();
+    void bronKerbosch(vector<int> R, vector<int> &P, vector<int> &X);
 };
 
 #endif
