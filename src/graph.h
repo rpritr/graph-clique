@@ -15,7 +15,7 @@ private:
     vector<vector<int>> G;
 
 public:
-    Graph(int V);
+    Graph(string path);
     vector<vector<int>> getGraph() const;
     vector<vector<int>> readGraph(string path);
     void printGraphMatrix();

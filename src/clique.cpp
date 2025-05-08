@@ -1,6 +1,7 @@
 #include "clique.h"
 
 // konstruktor za razred Clique
+// izracunam stopnje vozlisc
 Clique::Clique(const Graph &G) : G(G)
 {
     for (int i = 0; i < G.getGraph().size(); i++)
@@ -13,8 +14,6 @@ Clique::Clique(const Graph &G) : G(G)
     }
 }
 
-// overloadam operator, da ga lahko uporabim v main
-
 // izpis stopenj vozlisc v grafu
 void Clique::printVerticeDegrees(vector<pair<int, int>> V)
 {
@@ -24,10 +23,9 @@ void Clique::printVerticeDegrees(vector<pair<int, int>> V)
     }
 }
 
-// sort stopenj vozlisc
+// sort po stopnjah vozlisc v grafu
 vector<pair<int, int>> Clique::sortNodes()
 {
-
     vector<pair<int, int>> sorted(this->vertDegrees.begin(), this->vertDegrees.end());
     sort(sorted.begin(), sorted.end(), [](const pair<int, int> &a, const pair<int, int> &b)
          { return a.second > b.second; });
@@ -84,31 +82,31 @@ void Clique::findBronKerboschMaxClique()
     {
         P.push_back(i);
     }
-
     this->bronKerbosch(R, P, X);
 }
 
 // https://en.wikipedia.org/wiki/Bron%E2%80%93Kerbosch_algorithm
-void Clique::bronKerbosch(vector<int> R, vector<int> &P, vector<int> &X)
+void Clique::bronKerbosch(vector<int> R, vector<int> P, vector<int> X)
 {
     // cout << R.size() << endl;
-    // cout << P.size() << endl;
-    // cout << X.size() << endl;
-    if (R.size() > 10)
-    {
-        return;
-    }
+    //  cout << P.size() << endl;
+    //  cout << X.size() << endl;
+    //  if (R.size() > 10)
+    //{
+    //     return;
+    // }
+
     if (P.empty() && X.empty())
     {
         if (R.size() > clique.size())
         {
-            if (clique.size() != 0) // TODO mogoce klic spodaj po clique = R
-            {
-                cout << "bronKerbosch Max klika: ";
-                printClique();
-            }
-
+            // if (clique.size() != 0) // TODO mogoce klic spodaj po clique = R
+            //    {
             clique = R;
+            cout << "bronKerbosch Max klika: ";
+            printClique();
+            //    }
+
             return;
         }
         return;
@@ -130,6 +128,7 @@ void Clique::bronKerbosch(vector<int> R, vector<int> &P, vector<int> &X)
         newR.push_back(v);
 
         // P presek N, kjer je N sosed, torej za vsakega soseda
+        // vsi sosedi od vozlisca
         for (int j = 0; j < P.size(); j++)
         {
             int u = P[j];

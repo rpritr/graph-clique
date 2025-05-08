@@ -4,16 +4,19 @@ using namespace std;
 
 int main()
 {
-    Graph initGraph(6);               // kreiram graf
-    initGraph.readGraph("graph.txt"); // preberem iz datoteke
-    initGraph.printGraphMatrix();
-    initGraph.printGraphStats();
+    Graph g("graph100.txt"); // kreiram graf
+    // Graph g("bio-SC-CC.edges");
+    g.printGraphMatrix();
+    g.printGraphStats();
+    cout << "Edge list: " << endl;
+    g.printEdgeList();
 
-    Clique c(initGraph);
+    Clique c(g);
 
     c.findGreedyMaxClique();
 
-    Clique d(initGraph);
+    Clique d(g);
     d.findBronKerboschMaxClique();
+
     return 0;
 }
