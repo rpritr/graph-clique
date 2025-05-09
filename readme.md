@@ -6,24 +6,30 @@ C++ implementacija za iskanje največjih klik v neusmerjenem grafu:
 
 # Uporaba:
 
-Graph initGraph(6); 
-initGraph.readGraph("graph.txt");
+Graph g(PATH);
 
-Clique c(initGraph);
+Clique c(g);
 c.findGreedyMaxClique();
 
-Clique d(initGraph);
+Clique d(g);
 d.findBronKerboschMaxClique();
+
+# Metode
+
+Graph g(PATH);
+g.printGraphMatrix(); // izpis matrike sosednosti
+g.printGraphStats(); // izpis karatkeristik grafa
+g.printEdgeList(); // izpis seznama povezav
 
 # Vhodni format
 
 Vsaka vrstica predstavlja povezavo med vozliščema
-0 0
-0 1
-1 2
-2 3
-3 4
-2 4
+0 0__
+0 1__
+1 2__
+2 3__
+3 4__
+2 4__
 
 # Zagon programa
 
