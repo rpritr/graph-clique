@@ -16,20 +16,28 @@ d.findBronKerboschMaxClique();
 
 # Metode
 
-Graph g(PATH);
+Graph g(PATH);<br/>
+
 g.printGraphMatrix(); // izpis matrike sosednosti
+
 g.printGraphStats(); // izpis karatkeristik grafa
+
 g.printEdgeList(); // izpis seznama povezav
 
 # Vhodni format
 
 Vsaka vrstica predstavlja povezavo med vozliščema
-0 0__
-0 1__
-1 2__
-2 3__
-3 4__
-2 4__
+0 0
+
+0 1
+
+1 2
+
+2 3
+
+3 4
+
+2 4
 
 # Zagon programa
 
