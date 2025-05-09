@@ -88,25 +88,21 @@ void Clique::findBronKerboschMaxClique()
 // https://en.wikipedia.org/wiki/Bron%E2%80%93Kerbosch_algorithm
 void Clique::bronKerbosch(vector<int> R, vector<int> P, vector<int> X)
 {
-    // cout << R.size() << endl;
-    //  cout << P.size() << endl;
-    //  cout << X.size() << endl;
-    //  if (R.size() > 10)
-    //{
-    //     return;
-    // }
-
+    // dodam omejitev za iskanje na velikih grafih za globino rekurzije
+    static int depth = 0;
+    depth++;
+    if (depth > 10000)
+    {
+        cout << "Depth reached. Exiting." << endl;
+        return;
+    }
     if (P.empty() && X.empty())
     {
         if (R.size() > clique.size())
         {
-            // if (clique.size() != 0) // TODO mogoce klic spodaj po clique = R
-            //    {
             clique = R;
             cout << "bronKerbosch Max klika: ";
             printClique();
-            //    }
-
             return;
         }
         return;
