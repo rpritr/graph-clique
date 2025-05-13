@@ -18,6 +18,7 @@ public:
     void printVerticeDegrees(vector<pair<int, int>> V);             // izpis stopenj vozlisc
     vector<pair<int, int>> sortNodes();                             // sort za urejanje stopenj vozlisc
     void printClique();                                             // izpis klike
+    void findBruteforceClique();                                    // bruteforce iskanje klike
     void findGreedyMaxClique();                                     // pozresno iskanje max klike
     void findBronKerboschMaxClique();                               // iskanje max klike z bronKerbosch algoritmom
     void bronKerbosch(vector<int> R, vector<int> P, vector<int> X); // rekurzivna metoda za bronKerbosch

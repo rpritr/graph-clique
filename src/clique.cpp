@@ -1,5 +1,5 @@
 #include "clique.h"
-
+#include "subset.h"
 // konstruktor za razred Clique
 // izracunam stopnje vozlisc
 Clique::Clique(const Graph &G) : G(G)
@@ -43,6 +43,45 @@ void Clique::printClique()
     cout << endl;
 }
 
+void Clique::findBruteforceClique()
+{
+    cout << "Bruteforce Clique:" << endl;
+    Subset subset;
+
+    vector<int> nodes;
+    for (int i = 0; i < G.getGraph().size(); ++i)
+        nodes.push_back(i);
+
+    vector<vector<int>> allSubsets = subset.generate(nodes);
+
+    vector<int> maxClique; // max najdena klika
+    for (int i = 0; i < allSubsets.size(); ++i)
+    {
+        const vector<int> &candidate = allSubsets[i];
+        bool isClique = true;
+        for (int j = 0; j < candidate.size() && isClique; ++j)
+        {
+            for (int k = j + 1; k < candidate.size(); ++k)
+            {
+                if (G.getGraph()[candidate[j]][candidate[k]] == 0)
+                {
+                    isClique = false;
+                    break;
+                }
+            }
+        }
+
+        if (isClique && candidate.size() > maxClique.size())
+        {
+            maxClique = candidate;
+        }
+    }
+
+    cout << "Brute Force Max klika: ";
+    for (int v : maxClique)
+        cout << v << " ";
+    cout << endl;
+}
 // pozresno iskanje najvecje klike
 void Clique::findGreedyMaxClique()
 {
