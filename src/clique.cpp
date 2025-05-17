@@ -77,7 +77,7 @@ void Clique::findBruteforceClique()
         }
     }
 
-    cout << "Brute Force Max klika: ";
+    cout << "Brute Force Max clique: ";
     for (int v : maxClique)
         cout << v << " ";
     cout << endl;
@@ -106,7 +106,7 @@ void Clique::findGreedyMaxClique()
         if (add)
             this->clique.push_back(addV);
     }
-    cout << "Greedy Max klika: ";
+    cout << "Greedy Max clique: ";
     this->printClique();
 }
 
@@ -140,7 +140,7 @@ void Clique::bronKerbosch(vector<int> R, vector<int> P, vector<int> X)
         // if (R.size() > clique.size())
         //{
         clique = R;
-        cout << "bronKerbosch Max klika: ";
+        cout << "bronKerbosch Max clique: ";
         printClique();
         return;
         //}
