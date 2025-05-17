@@ -14,6 +14,6 @@ void Time::stop()
 
 void Time::printDuration(const std::string &label = "Trajanje") const
 {
-    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
-    std::cout << label << ": " << duration << " ms" << std::endl;
+    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
+    std::cout << label << ": " << duration << " qs" << std::endl;
 }

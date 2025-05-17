@@ -137,13 +137,13 @@ void Clique::bronKerbosch(vector<int> R, vector<int> P, vector<int> X)
     }
     if (P.empty() && X.empty())
     {
-        if (R.size() > clique.size())
-        {
-            clique = R;
-            cout << "bronKerbosch Max klika: ";
-            printClique();
-            return;
-        }
+        // if (R.size() > clique.size())
+        //{
+        clique = R;
+        cout << "bronKerbosch Max klika: ";
+        printClique();
+        return;
+        //}
         return;
     }
     if (P.empty())

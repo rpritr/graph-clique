@@ -7,18 +7,11 @@ using namespace std;
 int main()
 {
 
-    Graph g("./graphs/graph22.txt"); // kreiram graf
+    Graph g("./graphs/graph_fail.txt"); // kreiram graf
     g.printGraphMatrix();
     g.printGraphStats();
     cout << "Edge list: " << endl;
     g.printEdgeList();
-
-    Time bruteforce; // stevec za cas izvajanja BronKerbosch
-
-    Clique b(g);
-    b.findBruteforceClique();
-    bruteforce.stop();
-    bruteforce.printDuration("Bruteforce duration");
 
     Clique c(g);
     Time timerGreedy; // stevec za cas izvajanja pozresne metode
@@ -31,6 +24,13 @@ int main()
     d.findBronKerboschMaxClique();
     timerBron.stop();
     timerBron.printDuration("BronKerbosch duration");
+
+    Time bruteforce; // stevec za cas izvajanja BronKerbosch
+
+    Clique b(g);
+    b.findBruteforceClique();
+    bruteforce.stop();
+    bruteforce.printDuration("Bruteforce duration");
 
     return 0;
 }
