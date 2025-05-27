@@ -1,10 +1,10 @@
 # MaxClique
 
-C++ implementacija za iskanje največjih klik v neusmerjenem grafu:
-- požrešna metoda
-- Bron–Kerbosch algoritem
+C++ implementation for finding maximum clique in an undirected graph:
+- greedy method
+- Bron–Kerbosch algorithm
 
-# Uporaba:
+# Usage:
 
 Graph g(PATH);
 
@@ -14,19 +14,20 @@ c.findGreedyMaxClique();
 Clique d(g);
 d.findBronKerboschMaxClique();
 
-# Metode
+# Methods
 
 Graph g(PATH);<br/>
 
-g.printGraphMatrix(); // izpis matrike sosednosti
+g.printGraphMatrix(); // print adjacency matrix
 
-g.printGraphStats(); // izpis karatkeristik grafa
+g.printGraphStats(); // print graph statistics
 
-g.printEdgeList(); // izpis seznama povezav
+g.printEdgeList(); // print edge list
 
-# Vhodni format
+# Input format
 
-Vsaka vrstica predstavlja povezavo med vozliščema
+Each line represents an edge between two nodes
+
 0 0
 
 0 1
@@ -39,6 +40,6 @@ Vsaka vrstica predstavlja povezavo med vozliščema
 
 2 4
 
-# Zagon programa
+# Run the program
 
-make && ./maxclique 
+make && ./maxclique
